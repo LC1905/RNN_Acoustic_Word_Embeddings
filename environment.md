@@ -1,4 +1,4 @@
-1. log into midway machine
+1. log into midway machine:
 
 username: user@midway2.rcc.uchicago.edu
 
@@ -14,6 +14,6 @@ module load cuda/9.0
 
 conda activate tensorflow
 
-4. if using jupyter notebook
+4. if using jupyter notebook:
 
 https://git.rcc.uchicago.edu/ivy2/Jupyter_on_compute_nodes
