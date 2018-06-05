@@ -96,9 +96,10 @@ def word2onehot(word):
 	for s in word:
 		#print(s)
 		inc = [0] * 26
-		ind = alpha.index(s)
-		inc[ind] = 1
-		res.append(inc)
+		if s.isalpha():
+			ind = alpha.index(s)
+			inc[ind] = 1
+			res.append(inc)
 	return res
 
 def transcript_map(rg):

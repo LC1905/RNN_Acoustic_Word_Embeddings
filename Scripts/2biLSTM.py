@@ -337,6 +337,7 @@ def main():
 
     # define the model we are gonna load, see if we want to train from scratch
     last_epoch = int(args.lastepoch)
+    print "last_epoch:", last_epoch
     continue_training = False
     if last_epoch > -1:
         continue_training = True
@@ -365,6 +366,7 @@ def main():
     # train the models
     with tf.Session(config=tf.ConfigProto(log_device_placement=True)) as sess:
         if continue_training:
+            print "continue_training"
             saver.restore(sess, '../Saved_Models/2biLSTM/' + model_name)
         else:
             sess.run(tf.initialize_all_variables())
@@ -407,7 +409,7 @@ def main():
                 if i == last_epoch + conf.epoch or dev_ap == best_AP:
                     print("saving best AP...")
                     saver.save(sess, '../Saved_Models/2biLSTM/' + output_name, i)
-                keep_indices = [best_idx, last_epoch + conf.epoch]
+                keep_indices = [i, best_idx, last_epoch + conf.epoch]
                 dp.ModelClean(keep_indices, '../Saved_Models/2biLSTM/', output_name)
 
 if __name__ == '__main__':

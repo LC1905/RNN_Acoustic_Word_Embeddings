@@ -368,7 +368,7 @@ def AllEditDistances(full_labels, dataname):
 def BestAP(logfile):
     contents = open(logfile).read().split('\n')
     best_AP = 0
-    idx_now = -4
+    idx_now = -1
     idx = -4
     for content in contents:
         if content.startswith('Dev'):
@@ -385,10 +385,11 @@ def ModelClean(indices, path, output_name):
         if file.startswith(output_name):
             version = file[file.find('-') + 1:]
             #if version.endswith('meta'):
-                #version = version[:-5]
             version = version.split(".")[0]
+                #version = version[:-5]
             version = int(version)
             if version not in indices:
+                print "removing version", version
                 os.remove(path + '/' + file)
 
 
